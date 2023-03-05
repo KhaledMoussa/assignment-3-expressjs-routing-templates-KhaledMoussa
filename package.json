@@ -1,0 +1,17 @@
+{
+  "name": "express-project",
+  "version": "0.0.1",
+  "description": "first express project",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node ./bin/www",
+    "start-dev": "nodemon ./bin/www"
+  },
+  "author": "Khaled Moussa",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2",
+    "pug": "^3.0.2"
+  }
+}
