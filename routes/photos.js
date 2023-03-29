@@ -60,20 +60,6 @@ router.get('/:photoid',(req,res,next)=>{
 
   });
 
-//delete post
-  router.get('photo._id'+'?delete=true', (req,res,next)=>{
-
-    Photo.findOne({'_id': req.params.photoid})
-    .then((photo)=>{
-      res.render('deletePhoto', {
-        photo: photo,
-      });
-      photo.remove();
-      res.redirect('/photos');
-    }).catch((err)=>{
-      if (err) console.log(err);
-    });
-  });
 
 //create a new post
 

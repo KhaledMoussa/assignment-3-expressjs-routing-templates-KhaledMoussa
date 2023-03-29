@@ -9,7 +9,7 @@ var bodyparser = require('body-parser');
 var mongoose = require('mongoose');
 var app = express();
 
-//connect tp mongoose
+//connect to mongoose
 mongoose.connect('mongodb+srv://user:pass@project.qp7byej.mongodb.net/test?retryWrites=true&w=majority' , {useNewUrlParser: true, useUnifiedTopology: true})
 
 app.use(bodyparser.urlencoded({extended: false}));
