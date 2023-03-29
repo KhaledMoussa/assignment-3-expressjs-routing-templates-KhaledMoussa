@@ -4,12 +4,20 @@ var express = require('express');
 var path = require('path');
 var url = require('url');
 var users = require('./routes/users');
-
+var photos = require('./routes/photos');
+var bodyparser = require('body-parser');
+var mongoose = require('mongoose');
 var app = express();
+
+//connect tp mongoose
+mongoose.connect('mongodb+srv://user:pass@project.qp7byej.mongodb.net/test?retryWrites=true&w=majority' , {useNewUrlParser: true, useUnifiedTopology: true})
+
+app.use(bodyparser.urlencoded({extended: false}));
+
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
 
-app.use('/static', express.static(path.join(__dirname, 'public')));
+app.use('/static/', express.static(path.join(__dirname, 'public')));
 
 app.get('/', (req, res)=>{
   res.end('Root Requested!');
@@ -17,25 +25,14 @@ app.get('/', (req, res)=>{
 });
 
 app.use('/users', users);
+app.use('/photos', photos);
 
-// app.get('/users', (req, res)=>{
-//   res.end('/sers Requested');
-//
-// });
-//
-// app.get('/users/:userid', (req, res)=>{
-//   res.end(`/users Requested, userid ${req.params.userid}`);
-// });
-
-// app.get('/photos/:photoid', (req, res)=>{
-//   res.end(`/photos Requested, photoid ${req.params.photoid}, format ${req.query.format} and size ${req.query.size}`);
-// });
 
 
 
 app.use((req, res)=>{
   res.status(404);
-  res.redirect('/static/404page.html')
+  res.redirect('/404page.html')
 });
 
 
